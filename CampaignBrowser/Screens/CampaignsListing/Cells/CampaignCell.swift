@@ -45,9 +45,14 @@ class CampaignCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
         assert(nameLabel != nil)
         assert(descriptionLabel != nil)
         assert(imageView != nil)
+    }
+    
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        guard let superview = superview else { return }
+        self.contentView.widthAnchor.constraint(equalToConstant: superview.bounds.width).isActive = true
     }
 }
